@@ -1,0 +1,19 @@
+# action.yml
+name: 'Upload Release'
+description: 'Greet someone and record the time'
+inputs:
+  token:
+    required: true
+  to_url:  # id of input
+    description: 'The URL that will be accessed to receive the release'
+    required: true
+    default: ''  
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.to_url }}

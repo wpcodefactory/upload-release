@@ -24,7 +24,7 @@ if ! [[ -z ${INPUT_REPOSITORY} ]]; then
   REPO=INPUT_REPOSITORY
 fi
 
-echo URL_PARAMS;
+echo $URL_PARAMS;
 
 # Downloads the tag
 $(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")

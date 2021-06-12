@@ -21,7 +21,7 @@ TAG=1.0.0
 CURL="curl -H 'Authorization: token $TOKEN' \
       https://api.github.com/repos/$OWNER/$REPO/releases"; \
 #ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .assets[0].id); \
-DOWNLOAD_URL=$(eval "$CURL/tags/$TAG" | jq .url); \
+DOWNLOAD_URL=$(eval "$CURL/tags/$TAG" | jq .zipball_url); \
 
 echo $DOWNLOAD_URL;
 

@@ -25,9 +25,9 @@ DOWNLOAD_URL=$(eval "$CURL/tags/$TAG" | jq .url); \
 
 echo $DOWNLOAD_URL;
 
-TESTE="curl -H 'Authorization: token $TOKEN' \
+TESTE=$(eval "curl -H 'Authorization: token $TOKEN' \
      -H 'Accept:application/octet-stream' \
-     -i $DOWNLOAD_URL"
+     -i $DOWNLOAD_URL")
 
 echo $TESTE
 

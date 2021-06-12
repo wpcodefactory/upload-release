@@ -2,7 +2,8 @@
 
 OWNER="wpcodefactory"
 REPO="test-plugin"
-TOKEN=$INPUT_TOKEN
+#TOKEN=$INPUT_GITHUB_TOKEN
+TOKEN=$GITHUB_TOKEN
 TAG=1.0.0
 
 #JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
@@ -16,6 +17,9 @@ TAG=1.0.0
 #/usr/bin/curl -L -H "Accept:application/octet-stream" $URL | tar -xzv --strip-components=1
 #rm -rf latest.json
 
+echo $GITHUB_TOKEN
+echo $GITHUB_REF
+echo $GITHUB_REF#refs/*/
 
 
 TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$OWNER/$REPO/archive/refs/tags/$TAG.zip'")

@@ -9,6 +9,10 @@ inputs:
     description: 'The URL that will be accessed to receive the file'
     required: true
     default: ''  
+  url_params:
+    description: 'URL params'
+    required: false
+    default: ''
   tag_version:
     description: 'The tag version just released'
     required: false    

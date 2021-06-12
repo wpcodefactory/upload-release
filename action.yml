@@ -31,3 +31,4 @@ runs:
     - ${{ inputs.to_url }}
     - ${{ inputs.tag_version }}
     - ${{ inputs.file_param }}
+    - ${{ inputs.url_params }}

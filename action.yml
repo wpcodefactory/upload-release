@@ -4,6 +4,7 @@ description: 'Greet someone and record the time'
 inputs:
   github_token:
     required: false
+    default: ${secrets.GITHUB_TOKEN}
   to_url:
     description: 'The URL that will be accessed to receive the release'
     required: true

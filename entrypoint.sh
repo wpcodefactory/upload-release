@@ -3,11 +3,14 @@
 OWNER="wpcodefactory"
 REPO="test-plugin"
 TOKEN=$INPUT_GITHUB_TOKEN
-TAG=$INPUT_TAG_VERSION
+#TAG=$INPUT_TAG_VERSION
 FILE_PARAM=$INPUT_FILE_PARAM
 
 
-
+TAG="${GITHUB_REF:10}"
+if ! [[ -z ${INPUT_REPO} ]]; then
+  TAG=$INPUT_TAG_VERSION
+fi
 
 
 #JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest

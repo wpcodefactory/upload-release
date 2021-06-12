@@ -6,7 +6,7 @@ TOKEN=$INPUT_TOKEN
 
 JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
 echo $JSON_URL
-sh "curl -u $TOKEN:x-oauth-basic $JSON_URL  > latest.json"
+curl -u $TOKEN:x-oauth-basic $JSON_URL  > latest.json
 ID=`cat latest.json | jq '.assets[0].id' |  tr -d '"'`
 echo "ID --> " $ID
 URL=https://$TOKEN@api.github.com/repos/$OWNER/$REPO/releases/assets/$ID

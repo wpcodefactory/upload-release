@@ -5,6 +5,10 @@ TOKEN=$INPUT_GITHUB_TOKEN
 
 # URL Params 
 URL_PARAMS=$INPUT_URL_PARAMS
+CURL_URL_PARAMS=""
+if ! [[ -z $($INPUT_URL_PARAMS) ]]; then
+  CURL_URL_PARAMS="-d $INPUT_FILE_PARAM"
+fi
 
 # File Param
 FILE_PARAM=$INPUT_FILE_PARAM
@@ -14,7 +18,7 @@ TO_URL=$INPUT_TO_URL
 
 # Tag version
 TAG="${GITHUB_REF:10}"
-if ! [[ -z ${$INPUT_TAG_VERSION} ]]; then
+if ! [[ -z $($INPUT_TAG_VERSION) ]]; then
   TAG=$INPUT_TAG_VERSION
 fi
 
@@ -30,7 +34,7 @@ echo $URL_PARAMS;
 $(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
 
 # Uploads the file
-RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$TAG.zip' '$TO_URL'")
+RESPONSE=$(eval "curl $CURL_URL_PARAMS -F 'custom_param=1234' -F '$FILE_PARAM=@$TAG.zip' '$TO_URL'")
 
 # Response
 #echo $RESPONSE;

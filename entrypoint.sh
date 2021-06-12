@@ -25,11 +25,11 @@ DOWNLOAD_URL=$(eval "$CURL/tags/$TAG" | jq .url); \
 
 echo $DOWNLOAD_URL;
 
-TESTE = curl -H "Authorization: token $TOKEN" \
-     -H "Accept:application/octet-stream" \
-     -i $DOWNLOAD_URL
+TESTE="curl -H 'Authorization: token $TOKEN' \
+     -H 'Accept:application/octet-stream' \
+     -i $DOWNLOAD_URL"
 
-echo $TESTE;     
+echo $TESTE
 
 
 

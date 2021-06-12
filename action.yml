@@ -6,20 +6,19 @@ inputs:
     required: false
     default: ''
   to_url:
-    description: 'The URL that will be accessed to receive the release'
+    description: 'The URL that will be accessed to receive the file'
     required: true
     default: ''  
   tag_version:
-    description: 'The URL that will be accessed to receive the release'
-    required: false
-    default: '1.1.1'
+    description: 'The tag version just released'
+    required: false    
   file_param:  # id of input
     description: 'The URL param that used to send the file'
     required: false
     default: 'tag_file'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  response:
+    description: 'Response from the url'
 runs:
   using: 'docker'
   image: 'Dockerfile'

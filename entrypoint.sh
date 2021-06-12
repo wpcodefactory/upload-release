@@ -2,7 +2,7 @@
 
 OWNER=wpcodefactory
 REPO=test-plugin
-TOKEN=$1
+TOKEN=$INPUT_TOKEN
 
 JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
 echo $JSON_URL

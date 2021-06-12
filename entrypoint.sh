@@ -22,7 +22,7 @@ TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$O
 ls
 
 UPLOAD=$(eval "curl -F 'wpfactory_release_file=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
-echo UPLOAD;
+echo $UPLOAD;
 
 
 

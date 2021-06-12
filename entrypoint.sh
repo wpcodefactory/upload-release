@@ -3,7 +3,7 @@
 OWNER="wpcodefactory"
 REPO="test-plugin"
 TOKEN=$INPUT_TOKEN
-
+TAG=1.0.0
 
 #JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
 #echo $JSON_URL
@@ -16,21 +16,26 @@ TOKEN=$INPUT_TOKEN
 #/usr/bin/curl -L -H "Accept:application/octet-stream" $URL | tar -xzv --strip-components=1
 #rm -rf latest.json
 
-TAG=1.0.0
 
-CURL="curl -H 'Authorization: token $TOKEN' \
-      https://api.github.com/repos/$OWNER/$REPO/releases"; \
-ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
 
-#LATEST=$(eval "$CURL/latest"); \
-#ASSET_ID=$(eval "$CURL/latest" | jq .id); \
+TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$OWNER/$REPO/archive/refs/tags/$TAG.zip'")
+ls
 
-TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/wpcodefactory/test-plugin/archive/refs/tags/1.0.0.zip'")
+UPLOAD=$(eval "curl -F 'wpfactory_release_file=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
+echo UPLOAD;
+
+
+
+
+#CURL="curl -H 'Authorization: token $TOKEN' \
+      #https://api.github.com/repos/$OWNER/$REPO/releases"; \
+#ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
+
 
 #echo $LATEST;
-echo $TESTE;
+#echo $TESTE;
 
-ls
+
 
 #TESTE=$(eval "curl -H 'Authorization: token $TOKEN' \
 #     -H 'Accept:application/octet-stream' \

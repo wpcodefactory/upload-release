@@ -17,9 +17,9 @@ TAG=1.0.0
 #/usr/bin/curl -L -H "Accept:application/octet-stream" $URL | tar -xzv --strip-components=1
 #rm -rf latest.json
 
-echo $GITHUB_TOKEN
-echo $GITHUB_REF
-echo $GITHUB_REF#refs/*/
+echo "GITHUB_TOKEN" + $GITHUB_TOKEN
+echo "GITHUB_REF" + $GITHUB_REF
+echo "GITHUB_REF#refs/*/" + $GITHUB_REF#refs/*/
 
 
 TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$OWNER/$REPO/archive/refs/tags/$TAG.zip'")

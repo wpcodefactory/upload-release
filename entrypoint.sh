@@ -21,7 +21,7 @@ TAG=1.0.0
 TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$OWNER/$REPO/archive/refs/tags/$TAG.zip'")
 ls
 
-UPLOAD=$(eval "curl -F 'wpfactory_release_file=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
+UPLOAD=$(eval "curl -F 'wpfactory_upload_release=true' -F 'wpfactory_release_file=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
 echo $UPLOAD;
 
 

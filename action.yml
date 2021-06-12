@@ -4,7 +4,7 @@ description: 'Greet someone and record the time'
 inputs:
   github_token:
     required: false
-    default: "${secrets.GITHUB_TOKEN}"
+    default: ''
   to_url:
     description: 'The URL that will be accessed to receive the release'
     required: true
@@ -12,7 +12,7 @@ inputs:
   tag_version:
     description: 'The URL that will be accessed to receive the release'
     required: false
-    default: "${GITHUB_REF#refs/*/}"
+    default: '1.1.1'
   file_param:  # id of input
     description: 'The URL param that used to send the file'
     required: false

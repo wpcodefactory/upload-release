@@ -5,8 +5,13 @@ REPO="test-plugin"
 TOKEN=$INPUT_GITHUB_TOKEN
 #TOKEN=$GITHUB_TOKEN
 #TAG=1.0.0
-TAG=$INPUT_TAG_VERSION
+
 FILE_PARAM=$INPUT_FILE_PARAM
+
+TAG=$GITHUB_REF:10
+if ! [[ -z ${INPUT_REPO} ]]; then
+  TAG=$INPUT_TAG_VERSION
+fi
 
 #JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
 #echo $JSON_URL

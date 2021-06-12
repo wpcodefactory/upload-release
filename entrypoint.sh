@@ -2,16 +2,13 @@
 
 OWNER="wpcodefactory"
 REPO="test-plugin"
-#TOKEN=$INPUT_GITHUB_TOKEN
-TOKEN=$GITHUB_TOKEN
-#TAG=1.0.0
-
+TOKEN=$INPUT_GITHUB_TOKEN
+TAG=$INPUT_TAG_VERSION
 FILE_PARAM=$INPUT_FILE_PARAM
 
-TAG=$GITHUB_REF:10
-if ! [[ -z ${INPUT_REPO} ]]; then
-  TAG=$INPUT_TAG_VERSION
-fi
+
+
+
 
 #JSON_URL=https://api.github.com/repos/$OWNER/$REPO/releases/latest
 #echo $JSON_URL
@@ -26,15 +23,13 @@ fi
 
 echo "TAG" + $TAG
 echo "FILE_PARAM" + $FILE_PARAM
-echo "GITHUB_TOKEN" + $TOKEN
 echo "GITHUB_REF" + $GITHUB_REF
-echo "GITHUB_REF#refs/*/" + $GITHUB_REF#refs/*/
 
 
 TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$OWNER/$REPO/archive/refs/tags/$TAG.zip'")
 ls
 
-UPLOAD=$(eval "curl -F '$FILE_PARAM=1234' -F 'wpfactory_release_file=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
+UPLOAD=$(eval "curl -F '$FILE_PARAM=1234' -F '$FILE_PARAM=@$TAG.zip' 'http://ca4198430e4d.ngrok.io/wpdev/'")
 echo $UPLOAD;
 
 

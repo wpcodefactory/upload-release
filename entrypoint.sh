@@ -20,14 +20,14 @@ TAG=1.0.0
 
 CURL="curl -H 'Authorization: token $TOKEN' \
       https://api.github.com/repos/$OWNER/$REPO/releases"; \
-#ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
+ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
 
-LATEST=$(eval "$CURL/latest"); \
-ASSET_ID=$(eval "$CURL/latest" | jq .id); \
+#LATEST=$(eval "$CURL/latest"); \
+#ASSET_ID=$(eval "$CURL/latest" | jq .id); \
 
-TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/:owner/:repo/releases/assets/$ASSET_ID'")
+TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/wpcodefactory/test-plugin/archive/refs/tags/1.0.0.zip'")
 
-echo $LATEST;
+#echo $LATEST;
 echo $TESTE;
 
 ls

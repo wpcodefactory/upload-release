@@ -2,12 +2,20 @@
 name: 'Upload Release'
 description: 'Greet someone and record the time'
 inputs:
-  token:
-    required: true
-  to_url:  # id of input
+  github_token:
+    required: false
+  to_url:
     description: 'The URL that will be accessed to receive the release'
     required: true
     default: ''  
+  tag_version:
+    description: 'The URL that will be accessed to receive the release'
+    required: false
+    default: ${GITHUB_REF#refs/*/}
+  file_param:  # id of input
+    description: 'The URL param that used to send the file'
+    required: false
+    default: 'tag_file'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -15,5 +23,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.token }}
+    - ${{ inputs.github_token }}
     - ${{ inputs.to_url }}
+    - ${{ inputs.tag_version }}
+    - ${{ inputs.file_param }}

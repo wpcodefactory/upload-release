@@ -1,3 +1,5 @@
+#!/bin/sh -l
+
 OWNER=wpcodefactory
 REPO=test-plugin
 TOKEN=$1

@@ -22,7 +22,7 @@ CURL="curl -H 'Authorization: token $TOKEN' \
       https://api.github.com/repos/$OWNER/$REPO/releases"; \
 ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
 
-TESTE=$eval("curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/:owner/:repo/releases/assets/$ASSET_ID'")
+TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/:owner/:repo/releases/assets/$ASSET_ID'")
 
 echo $TESTE;
 

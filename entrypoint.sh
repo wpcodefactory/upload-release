@@ -18,8 +18,9 @@ TOKEN=$INPUT_TOKEN
 
 TAG=1.0.0
 
-
 CURL="curl -H 'Authorization: token $TOKEN' \
       https://api.github.com/repos/$OWNER/$REPO/releases"; \
 ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .assets[0].id); \
 eval "$CURL/assets/$ASSET_ID -LJOH 'Accept: application/octet-stream'"
+
+curl -vLJO -H 'Authorization: token $INPUT_TOKEN' 'https://api.github.com/repos/$OWNER/$REPO/releases/assets/ASSET_ID'

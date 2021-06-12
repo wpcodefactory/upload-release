@@ -23,7 +23,7 @@ CURL="curl -H 'Authorization: token $TOKEN' \
 #ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .assets[0].id); \
 TEST=$(eval "$CURL/tags/$TAG"); \
 
-echo TEST;
+echo $TEST;
 
 #eval "$CURL/assets/$ASSET_ID -LJOH 'Accept: application/octet-stream' --output test.zip"
 

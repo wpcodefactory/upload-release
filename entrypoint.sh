@@ -20,11 +20,17 @@ TAG=1.0.0
 
 CURL="curl -H 'Authorization: token $TOKEN' \
       https://api.github.com/repos/$OWNER/$REPO/releases"; \
-ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
+#ASSET_ID=$(eval "$CURL/tags/$TAG" | jq .id); \
+
+LATEST=$(eval "$CURL/latest"); \
+ASSET_ID=$(eval "$CURL/latest" | jq .id); \
 
 TESTE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/:owner/:repo/releases/assets/$ASSET_ID'")
 
+echo $LATEST;
 echo $TESTE;
+
+ls
 
 #TESTE=$(eval "curl -H 'Authorization: token $TOKEN' \
 #     -H 'Accept:application/octet-stream' \
@@ -50,6 +56,6 @@ echo $TESTE;
 
 #eval "$CURL/assets/$ASSET_ID -LJOH 'Accept: application/octet-stream' --output test.zip"
 
-ls
+
 #curl -vLJO -H 'Authorization: token $INPUT_TOKEN' 'https://api.github.com/repos/$OWNER/$REPO/releases/assets/$ASSET_ID'
 #ls

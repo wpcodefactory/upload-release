@@ -12,10 +12,8 @@ URL_PARAMS=$INPUT_URL_PARAMS
 #	done
 #fi
 
-# File Param
+# File Param when sending to url
 FILE_PARAM=$INPUT_FILE_PARAM
-
-OUTPUT_FILENAME="output_file.zip"
 
 # URL that will receive the file
 TO_URL=$INPUT_TO_URL
@@ -31,6 +29,10 @@ REPO=$GITHUB_REPOSITORY
 if ! [[ -z ${INPUT_REPOSITORY} ]]; then
   REPO=INPUT_REPOSITORY
 fi
+
+#GITHUB_ACTOR = $GITHUB_ACTOR
+#OUTPUT_FILENAME="output_file.zip"
+OUTPUT_FILENAME="${$REPO#*/}$TAG.zip"
 
 echo $URL_PARAMS;
 

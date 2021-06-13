@@ -11,7 +11,7 @@ CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
 	for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		
 	    #CURL_URL_PARAMS+= " -F ''"
-	done
+	done | column -t -s$'\t'
 fi
 
 # File Param when sending to url

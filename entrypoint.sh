@@ -36,7 +36,7 @@ OUTPUT_FILENAME="${$REPO#*/}$TAG.zip"
 
 echo $URL_PARAMS
 echo $REPO
-echo OUTPUT_FILENAME
+echo $OUTPUT_FILENAME
 
 # Downloads the tag
 #$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")

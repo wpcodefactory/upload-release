@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:latest
 
 ENV VERSION=0.0.3
 ENV GITHUB_HEAD_REF = ""

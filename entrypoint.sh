@@ -27,28 +27,21 @@ fi
 # Repository, including author/repository
 REPO=$GITHUB_REPOSITORY
 if ! [[ -z ${INPUT_REPOSITORY} ]]; then
-  REPO=INPUT_REPOSITORY
+  REPO=$INPUT_REPOSITORY
 fi
 
-#GITHUB_ACTOR = $GITHUB_ACTOR
-#OUTPUT_FILENAME="output_file.zip"
+# Output filename
 OUTPUT_FILENAME="${REPO##*/}-$TAG.zip"
-
-echo $URL_PARAMS
-echo $REPO
-echo $OUTPUT_FILENAME
+if ! [[ -z ${INPUT_OUTPUT_FILENAME} ]]; then
+  OUTPUT_FILENAME=$INPUT_OUTPUT_FILENAME
+fi
 
 # Downloads the tag
-#$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
 GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$OUTPUT_FILENAME'")
-
-ls
 echo $GITHUB_RESPONSE;
 
 # Uploads the file
-#RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$TAG.zip' '$TO_URL'")
 RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$OUTPUT_FILENAME' '$TO_URL'")
 
 # Response
-#echo $RESPONSE;
 echo "::set-output name=response::$RESPONSE"

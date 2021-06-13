@@ -20,6 +20,9 @@ inputs:
     description: 'The URL param that used to send the file'
     required: false
     default: 'tag_file'
+  output_filename:  # id of input
+    description: 'The filename from downloaded tag (Default to repository-tag.zip)'
+    required: false    
 outputs:
   response:
     description: 'Response from the url'
@@ -32,3 +35,4 @@ runs:
     - ${{ inputs.tag_version }}
     - ${{ inputs.file_param }}
     - ${{ inputs.url_params }}
+    - ${{ inputs.output_filename }}

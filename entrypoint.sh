@@ -6,12 +6,10 @@ TOKEN=$INPUT_GITHUB_TOKEN
 echo '=====';
 # URL Params 
 URL_PARAMS=$INPUT_URL_PARAMS
+echo $URL_PARAMS
 CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
-	for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do
-		echo k;
-		value=$(jq -r ".children.values[$k]" file);
-		echo value
+	for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		
 	    #CURL_URL_PARAMS+= " -F ''"
 	done
 fi

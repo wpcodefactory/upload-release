@@ -9,9 +9,13 @@ URL_PARAMS=$INPUT_URL_PARAMS
 echo $URL_PARAMS
 CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
-	jq -c '.[]' <<< "$URL_PARAMS" | while read i; do
-    	echo $i;
-	done
+	$ jq -r 'to_entries | map(.key + "|" + (.value | tostring)) | .[]' <<<"$URL_PARAMS" | \
+  	while IFS='|' read key value; do
+    	echo "$key has value $value"
+  	done
+	#jq -c '.[]' <<< "$URL_PARAMS" | while read i; do
+    #	echo $i;
+	#done
 	#for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		
 	#    #CURL_URL_PARAMS+= " -F ''"
 	#done | column -t -s$'\t'

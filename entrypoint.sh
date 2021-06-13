@@ -36,7 +36,9 @@ echo $URL_PARAMS;
 
 # Downloads the tag
 #$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
-GITHUB_RESPONSE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' --output $OUTPUT_FILENAME 'https://api.github.com/repos/$REPO/zipball/$TAG'")
+GITHUB_RESPONSE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$OUTPUT_FILENAME'")
+
+echo "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$OUTPUT_FILENAME'";
 
 ls
 echo $GITHUB_RESPONSE;

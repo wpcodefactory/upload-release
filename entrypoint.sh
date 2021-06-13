@@ -33,7 +33,8 @@ fi
 echo $URL_PARAMS;
 
 # Downloads the tag
-$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
+#$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
+$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG'")
 
 # Uploads the file
 RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$TAG.zip' '$TO_URL'")

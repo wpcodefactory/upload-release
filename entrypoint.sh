@@ -11,7 +11,7 @@ CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
 	jq -r 'to_entries | map(.key + "|" + (.value | tostring)) | .[]' <<<"$URL_PARAMS" | \
   	while IFS='|' read key value; do
-    	$CURL_URL_PARAMS+=" -F '$key=$value'"
+    	CURL_URL_PARAMS="$CURL_URL_PARAMS -F '$key=$value'"
     	echo $CURL_URL_PARAMS
   	done
 	#jq -c '.[]' <<< "$URL_PARAMS" | while read i; do

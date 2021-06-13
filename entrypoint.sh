@@ -3,16 +3,16 @@
 # Token 
 TOKEN=$INPUT_GITHUB_TOKEN
 
-echo '=====';
+#echo '=====';
 # URL Params 
 URL_PARAMS=$INPUT_URL_PARAMS
 echo $URL_PARAMS
-CURL_URL_PARAMS=""
-if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
-	for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		
-	    #CURL_URL_PARAMS+= " -F ''"
-	done | column -t -s$'\t'
-fi
+#CURL_URL_PARAMS=""
+#if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
+#	for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		
+#	    #CURL_URL_PARAMS+= " -F ''"
+#	done | column -t -s$'\t'
+#fi
 
 # File Param when sending to url
 FILE_PARAM=$INPUT_FILE_PARAM
@@ -43,7 +43,7 @@ GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.
 echo $GITHUB_RESPONSE;
 
 # Uploads the file
-RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
+RESPONSE=$(eval "curl -d '$URL_PARAMS' -F 'custom_param=1234' -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
 
 # Response
 echo "::set-output name=response::$RESPONSE"

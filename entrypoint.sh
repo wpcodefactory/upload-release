@@ -32,7 +32,7 @@ fi
 
 #GITHUB_ACTOR = $GITHUB_ACTOR
 #OUTPUT_FILENAME="output_file.zip"
-OUTPUT_FILENAME="${$REPO#*/}$TAG.zip"
+OUTPUT_FILENAME="${$REPO#*/}"+"$TAG.zip"
 
 echo $URL_PARAMS
 echo $REPO

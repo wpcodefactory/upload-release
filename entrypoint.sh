@@ -11,7 +11,7 @@ CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
 	jq -r 'to_entries | map(.key + "|" + (.value | tostring)) | .[]' <<<"$URL_PARAMS" | \
   	while IFS='|' read key value; do
-    	echo "$key has value $value"
+    	CURL_URL_PARAMS += " -F '$key=$value'"
   	done
 	#jq -c '.[]' <<< "$URL_PARAMS" | while read i; do
     #	echo $i;
@@ -20,6 +20,8 @@ if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
 	#    #CURL_URL_PARAMS+= " -F ''"
 	#done | column -t -s$'\t'
 fi
+
+echo $CURL_URL_PARAMS
 
 # File Param when sending to url
 FILE_PARAM=$INPUT_FILE_PARAM

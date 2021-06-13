@@ -9,7 +9,7 @@ URL_PARAMS=$INPUT_URL_PARAMS
 echo $URL_PARAMS
 CURL_URL_PARAMS=""
 if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
-	jq -c '.[]' input.json | while read i; do
+	jq -c '.[]' <<< "$URL_PARAMS" | while read i; do
     	echo $i;
 	done
 	#for k in $(jq '.children.values | keys | .[]' <<< "$URL_PARAMS"); do		

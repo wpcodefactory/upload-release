@@ -14,8 +14,7 @@ if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
   	while IFS='|' read key value; do
   		#echo "$key has value $value"
   		#echo "$key=$value"
-    	CURL_URL_PARAMS="$CURL_URL_PARAMS -F '$key is $value'"
-    	echo $CURL_URL_PARAMS
+    	CURL_URL_PARAMS="$CURL_URL_PARAMS -F '$key=$value'"    	
   	done
 	#jq -c '.[]' <<< "$URL_PARAMS" | while read i; do
     #	echo $i;
@@ -25,7 +24,7 @@ if ! [[ -z "$INPUT_URL_PARAMS" ]]; then
 	#done | column -t -s$'\t'
 fi
 
-echo "TEST:"
+#echo "TEST:"
 echo $CURL_URL_PARAMS
 
 # File Param when sending to url
@@ -53,11 +52,11 @@ if ! [[ -z ${INPUT_FILENAME} ]]; then
 fi
 
 # Downloads the tag
-#GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME'")
+GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME'")
 echo $GITHUB_RESPONSE;
 
 # Uploads the file
-#RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
+RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
 
 # Response
 echo "::set-output name=response::$RESPONSE"

@@ -34,13 +34,13 @@ fi
 #OUTPUT_FILENAME="output_file.zip"
 OUTPUT_FILENAME="${$REPO#*/}$TAG.zip"
 
-echo $URL_PARAMS;
+echo $URL_PARAMS
+echo $REPO
+echo OUTPUT_FILENAME
 
 # Downloads the tag
 #$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://github.com/$REPO/archive/refs/tags/$TAG.zip'")
 GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$OUTPUT_FILENAME'")
-
-echo "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$OUTPUT_FILENAME'";
 
 ls
 echo $GITHUB_RESPONSE;

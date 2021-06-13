@@ -37,7 +37,7 @@ echo $URL_PARAMS;
 GITHUB_RESPONSE=$(eval "curl -vLJO -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG'")
 
 ls
-echo GITHUB_RESPONSE;
+echo $GITHUB_RESPONSE;
 
 # Uploads the file
 RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$TAG.zip' '$TO_URL'")

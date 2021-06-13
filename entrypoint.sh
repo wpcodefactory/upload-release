@@ -44,7 +44,7 @@ echo $GITHUB_RESPONSE;
 
 # Uploads the file
 #RESPONSE=$(eval "curl -F 'custom_param=1234' -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
-RESPONSE=$(eval "curl -d '$URL_PARAMS' --data-binary '$FILE_PARAM=@$FILENAME' '$TO_URL'")
+RESPONSE=$(eval "curl -d '$URL_PARAMS' --data-binary '@$FILENAME' '$TO_URL'")
 
 # Response
 echo "::set-output name=response::$RESPONSE"

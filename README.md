@@ -25,7 +25,7 @@ jobs:
     steps:
 
     - name: Upload
-      uses: wpcodefactory/upload-tag-to-url@master
+      uses: wpcodefactory/upload-tag-to-url@v1.0.0
       id: release
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}        
@@ -48,7 +48,7 @@ jobs:
     steps:
 
     - name: Upload
-      uses: wpcodefactory/upload-tag-to-url@master
+      uses: wpcodefactory/upload-tag-to-url@v1.0.0
       id: release
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

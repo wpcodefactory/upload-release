@@ -40,7 +40,8 @@ FILENAME="${REPO##*/}-$TAG"
 if ! [[ -z ${INPUT_FILENAME} ]]; then
   FILENAME=$INPUT_FILENAME
 fi
-FILENAME_FULL = "$FILENAME.$EXT";
+
+FILENAME_FULL="$FILENAME.$EXT"
 
 # Downloads the tag
 GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME_FULL'")

@@ -30,10 +30,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}        
         to_url: 'http://the-url-receiving-the-file'
-        file_param: 'custom_file_param'        
-    
-    - name: Response
-      run: echo Response from URL - ${{ steps.release.outputs.response }}
+        file_param: 'custom_file_param'
 ```
 
 

@@ -59,7 +59,7 @@ zip -r $FILENAME_FULL .
 # Uploads the file
 RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME_FULL' '$TO_URL'")
 
-echo RESPONSE
+echo $RESPONSE
 
 # Response
 TEST="abc"

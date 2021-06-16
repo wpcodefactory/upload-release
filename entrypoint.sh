@@ -54,7 +54,7 @@ cd */
 mv ../{"${PWD##*/}",${FILENAME}}
 cd ..
 ls
-zip -r $FILENAME_FULL
+zip -r $FILENAME_FULL .
 ls
 
 # Uploads the file

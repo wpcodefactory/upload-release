@@ -63,4 +63,4 @@ ls
 RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME_FULL' '$TO_URL'")
 
 # Response
-echo "::set-output name=response::$RESPONSE"
+#echo "::set-output name=response::$RESPONSE"

@@ -42,4 +42,4 @@ runs:
     - ${{ inputs.filename }}
     - ${{ inputs.filename_ext }}
 branding:
-  icon: upload
+  icon: 'upload'

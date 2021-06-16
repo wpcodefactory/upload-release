@@ -1,8 +1,9 @@
 # action.yml
-name: 'Upload Release'
-description: 'Greet someone and record the time'
+name: 'Upload tag to url'
+description: 'Uploads the zip file from a tag version to a custom url'
 inputs:
   github_token:
+    description: 'The github token'
     required: false
     default: ''
   to_url:

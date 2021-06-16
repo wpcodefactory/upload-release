@@ -46,6 +46,7 @@ FILENAME_FULL = "$FILENAME.$EXT";
 GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME_FULL'")
 echo $GITHUB_RESPONSE;
 
+ls
 unzip $FILENAME_FULL
 rm $FILENAME_FULL
 cd */
@@ -54,6 +55,7 @@ cd ..
 ls
 zip -r $FILENAME_FULL
 ls
+
 # Uploads the file
 # RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
 

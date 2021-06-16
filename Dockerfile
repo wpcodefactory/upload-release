@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ENV VERSION=0.0.3
-ENV GITHUB_HEAD_REF = ""
+ENV GITHUB_HEAD_REF=""
 
 RUN apk add --update --no-cache bash curl
 RUN apk add --no-cache jq httpie

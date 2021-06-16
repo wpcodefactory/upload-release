@@ -1,6 +1,6 @@
 # Upload tag to url
 
-A Github action that uploads the zip file from a tag version to a custom url.
+A Github action that uploads the zip file from a tag version to a custom URL.
 
 The zip file uploaded is the one from this pattern:
 ```

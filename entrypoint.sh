@@ -32,19 +32,28 @@ if ! [[ -z ${INPUT_REPOSITORY} ]]; then
   REPO=$INPUT_REPOSITORY
 fi
 
+# Extension
+EXT=$INPUT_FILENAME_EXT
+
 # Filename
-FILENAME="${REPO##*/}-$TAG.zip"
+FILENAME="${REPO##*/}-$TAG"
 if ! [[ -z ${INPUT_FILENAME} ]]; then
   FILENAME=$INPUT_FILENAME
 fi
+FILENAME_FULL = "$FILENAME.$EXT";
 
 # Downloads the tag
-GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME'")
+GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.github.com/repos/$REPO/zipball/$TAG' --output '$FILENAME_FULL'")
 echo $GITHUB_RESPONSE;
 
-unzip $FILENAME
+unzip $FILENAME_FULL
+rm $FILENAME_FULL
+cd */
+mv ../{"${PWD##*/}",${FILENAME}}
+cd ..
 ls
-
+zip -r $FILENAME_FULL
+ls
 # Uploads the file
 # RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME' '$TO_URL'")
 

@@ -8,7 +8,7 @@ inputs:
   to_url:
     description: 'The URL that will be accessed to receive the file'
     required: true
-    default: ''  
+    default: ''
   url_params:
     description: 'URL params'
     required: false
@@ -23,6 +23,10 @@ inputs:
   filename:  # id of input
     description: 'The filename from downloaded tag (Default to repository-tag.zip)'
     required: false    
+  filename_ext:  # id of input
+    description: 'The filename extension (Default to zip)'
+    required: false    
+    default: 'zip'
 outputs:
   response:
     description: 'Response from the url'
@@ -36,3 +40,4 @@ runs:
     - ${{ inputs.file_param }}
     - ${{ inputs.url_params }}
     - ${{ inputs.filename }}
+    - ${{ inputs.filename_ext }}

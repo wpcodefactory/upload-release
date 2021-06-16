@@ -16,14 +16,14 @@ inputs:
   tag_version:
     description: 'The tag version just released'
     required: false    
-  file_param:  # id of input
+  file_param:
     description: 'The URL param that used to send the file'
     required: false
     default: 'tag_file'
-  filename:  # id of input
+  filename:
     description: 'The filename from downloaded tag (Default to repository-tag.zip)'
     required: false    
-  filename_ext:  # id of input
+  filename_ext:
     description: 'The filename extension (Default to zip)'
     required: false    
     default: 'zip'

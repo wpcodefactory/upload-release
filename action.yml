@@ -41,3 +41,5 @@ runs:
     - ${{ inputs.url_params }}
     - ${{ inputs.filename }}
     - ${{ inputs.filename_ext }}
+branding:
+  icon: upload

@@ -49,15 +49,12 @@ GITHUB_RESPONSE=$(eval "curl -vLJ -H 'Authorization: token $TOKEN' 'https://api.
 # echo $GITHUB_RESPONSE;
 
 # Renames zip archive folder
-ls
 unzip $FILENAME_FULL
 rm $FILENAME_FULL
 cd */
 mv ../{"${PWD##*/}",${FILENAME}}
 cd ..
-ls
 zip -r $FILENAME_FULL .
-ls
 
 # Uploads the file
 RESPONSE=$(eval "curl $CURL_URL_PARAMS -F '$FILE_PARAM=@$FILENAME_FULL' '$TO_URL'")

@@ -25,8 +25,7 @@ jobs:
     steps:
 
     - name: Upload
-      uses: wpcodefactory/upload-tag-to-url@v1.0.0
-      id: release
+      uses: wpcodefactory/upload-tag-to-url@v1.0.0      
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}        
         to_url: 'http://the-url-receiving-the-file'
